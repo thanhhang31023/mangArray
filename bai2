@@ -1,0 +1,55 @@
+// Tạo mảng chuỗi gồm n phần tử (n nhập vào từ bàn phím)
+// ● Nhập thông tin cho các phần tử
+// ● In thông tin ra màn hình
+// ● Đếm số lần “Java” xuất hiện trong mảng
+// ● Nhập vào từ bàn phím chuỗi bất kỳ, kiểm tra chuỗi đó ở vị trí
+//nào của mảng
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nhập số phần tử của mảng: ");
+        int n = scanner.nextInt();
+        scanner.nextLine();
+
+        String[] arr = new String[n];
+
+        System.out.println("Nhập thông tin cho các phần tử của mảng:");
+        for (int i = 0; i < n; i++) {
+            System.out.print("Phần tử thứ " + i + ": ");
+            arr[i] = scanner.nextLine();
+        }
+
+        System.out.println("Thông tin của các phần tử trong mảng:");
+        for (String j : arr) {
+            System.out.println(j);
+        }
+
+        // Đếm số lần "Java" xuất hiện trong mảng
+        int countJava = 0;
+        for (String k : arr) {
+            if (k.equals("Java")) {
+                countJava++;
+            }
+        }
+        System.out.println("Số lần \"Java\" xuất hiện trong mảng: " + countJava);
+
+        // Nhập chuỗi từ bàn phím để kiểm tra vị trí trong mảng
+        System.out.print("Nhập chuỗi để kiểm tra trong mảng: ");
+        String chuoiTimKiem = scanner.nextLine();
+        boolean kiemTra = false;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].equals(chuoiTimKiem)) {
+                System.out.println("Chuỗi \"" + chuoiTimKiem + "\" được tìm thấy trong mảng ở vị trí :"+i);
+                kiemTra = true;
+                break;
+            }
+        }
+        if (!kiemTra) {
+            System.out.println("Chuỗi \"" + chuoiTimKiem + "\" không được tìm thấy trong mảng.");
+        }
+    }
+}
