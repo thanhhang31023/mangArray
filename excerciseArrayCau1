@@ -1,0 +1,44 @@
+//Câu 1: Viết chương trình thực hiện công việc:
+//
+//Nhập vào từ bàn phím họ và tên bạn
+//Thực hiện chuẩn hhóa chuỗi vừa nhập.
+//Ví dụ: lục tanh ngọc -> Lục Thanh Ngọc
+//Gợi ý: sử dụng phương thức split() để cắt chuỗi
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập họ và tên của bạn: ");
+        String hoTen = scanner.nextLine();
+
+        // Chuẩn hóa xâu họ và tên
+        hoTen = chuanHoaHoTen(hoTen);
+
+        System.out.println("Họ và tên sau khi chuẩn hóa: " + hoTen);
+    }
+    public static String chuanHoaHoTen(String hoTen) {
+        // Xóa khoảng trắng thừa ở đầu và cuối xâu
+        hoTen = hoTen.trim();
+
+        // Chuyển tất cả ký tự thành chữ thường
+        hoTen = hoTen.toLowerCase();
+
+        // Tách xâu thành các từ
+        String[] words = hoTen.split("\\s+");
+
+        // Viết hoa ký tự đầu của mỗi từ
+        StringBuilder result = new StringBuilder();
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                char firstChar = Character.toUpperCase(word.charAt(0));
+                String restOfWord = word.substring(1);
+                result.append(firstChar).append(restOfWord).append(" ");
+            }
+        }
+        // Xóa khoảng trắng thừa ở cuối xâu
+        return result.toString().trim();
+    }
+}
+
