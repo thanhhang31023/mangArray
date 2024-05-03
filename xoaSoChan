@@ -1,0 +1,45 @@
+//Nhập vào 1 mảng số nguyên gồm N phần tử. Xoá tất cả các phần tử có giá trị chẵn.
+//Ví dụ:
+//input: arr = {1,2,3,4}
+//output: arr = {1,3}
+
+import java.util.Scanner;
+
+public class Main {
+    // Phương thức để xoá tất cả các phần tử có giá trị chẵn và trả về kích thước mới của mảng
+    public static int xoaPhanTuChan(int[] arr) {
+        int newSize = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 != 0) {
+                arr[newSize] = arr[i];
+                newSize++;
+            }
+        }
+        return newSize;
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nhập số lượng phần tử của mảng: ");
+        int N = scanner.nextInt();
+
+        int[] arr = new int[N];
+
+        System.out.println("Nhập các phần tử của mảng:");
+        for (int i = 0; i < N; i++) {
+            System.out.print("arr[" + i + "] =");
+            arr[i] = scanner.nextInt();
+        }
+
+        int newSize = xoaPhanTuChan(arr);
+
+        System.out.println("Mảng sau khi xoá các phần tử có giá trị chẵn:");
+        for (int i = 0; i < newSize; i++) {
+            System.out.print(arr[i] + " ");
+        }
+
+        scanner.close();
+    }
+
+}
+
