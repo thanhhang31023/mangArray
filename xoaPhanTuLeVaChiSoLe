@@ -1,0 +1,37 @@
+//Nhập vào 1 mảng số nguyên gồm N phần tử. Hãy xoá các phần tử có chỉ số lẻ và giá trị lẻ.
+//Ví dụ:
+//input: arr = {1,1,3,4,5}
+//output: arr = {1,3,4,5}
+//Lưu ý: Chỉ số mảng bắt đầu từ 0
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nhập số phần tử của mảng: ");
+        int n = scanner.nextInt();
+
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("arr[" + i + "] =");
+            arr[i] = scanner.nextInt();
+        }
+
+        // Xoá các phần tử có chỉ số lẻ và giá trị lẻ
+        int k = 0;
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0 || arr[i] % 2 == 0) {
+                arr[k] = arr[i];
+                k++;
+            }
+        }
+        int[] result = Arrays.copyOf(arr, k);   // một bản sao của mảng arr với kích thước mới là k.
+   
+        System.out.println("Mảng sau khi xoá các phần tử có chỉ số lẻ và giá trị lẻ: " + Arrays.toString(result));
+    }
+}
+
