@@ -1,0 +1,80 @@
+//1 Viết chương trình nhập vào 2 ma trận vuông A  và  B , in mảng đó ra màn hình.
+//● Thực hiện cộng 2 ma trận
+// ● Tìm ma trận chuyển vị của 2 ma trận đó
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nhập kích thước của ma trận (số hàng/cột): ");
+        int size = scanner.nextInt();
+
+        // Khởi tạo ma trận A và B với kích thước đã nhập
+        int[][] maTranA = new int[size][size];
+        int[][] maTranB = new int[size][size];
+
+        System.out.println("Nhập các giá trị cho ma trận A:");
+        nhapGiaTriMaTran(scanner, maTranA);
+
+        System.out.println("Nhập các giá trị cho ma trận B:");
+        nhapGiaTriMaTran(scanner, maTranB);
+
+        System.out.println("Ma trận A:");
+        inMaTran(maTranA);
+        System.out.println("Ma trận B:");
+        inMaTran(maTranB);
+
+        int[][] tongMaTran = congMaTran(maTranA, maTranB);
+        System.out.println("Tổng của ma trận A và B:");
+        inMaTran(tongMaTran);
+
+        System.out.println("Ma trận chuyển vị của ma trận A:");
+        inMaTran(maTranChuyenVi(maTranA));
+        System.out.println("Ma trận chuyển vị của ma trận B:");
+        inMaTran(maTranChuyenVi(maTranB));
+    }
+
+    // Phương thức nhập giá trị cho ma trận
+    public static void nhapGiaTriMaTran(Scanner scanner, int[][] matran) {
+        for (int i = 0; i < matran.length; i++) {
+            for (int j = 0; j < matran[i].length; j++) {
+                System.out.print("Nhập giá trị tại [" + i + "][" + j + "]: ");
+                matran[i][j] = scanner.nextInt();
+            }
+        }
+    }
+
+    // Phương thức in ma trận
+    public static void inMaTran(int[][] matran) {
+        for (int[] row : matran) {
+            for (int num : row) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    // Phương thức cộng 2 ma trận
+    public static int[][] congMaTran(int[][] maTranA, int[][] maTranB) {
+        int[][] result = new int[maTranA.length][maTranA.length];
+        for (int i = 0; i < maTranA.length; i++) {
+            for (int j = 0; j < maTranA[i].length; j++) {
+                result[i][j] = maTranA[i][j] + maTranB[i][j];
+            }
+        }
+        return result;
+    }
+
+    // Phương thức tìm ma trận chuyển vị
+    public static int[][] maTranChuyenVi(int[][] matran) {
+        int[][] result = new int[matran.length][matran.length];
+        for (int i = 0; i < matran.length; i++) {
+            for (int j = 0; j < matran[i].length; j++) {
+                result[j][i] = matran[i][j];
+            }
+        }
+        return result;
+    }
+}
