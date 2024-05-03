@@ -1,0 +1,53 @@
+// Viết chương trình nhập vào 1 mảng đa chiều, in mảng đó ra màn hình. 
+//Tính tổng các phần tử chia hết cho 5 trong mảng đó
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Nhập số hàng và số cột của mảng đa chiều
+        System.out.print("Nhập số hàng của mảng: ");
+        int rows = scanner.nextInt();
+        System.out.print("Nhập số cột của mảng: ");
+        int cols = scanner.nextInt();
+
+        // Khai báo mảng đa chiều
+        int[][] arr = new int[rows][cols];
+
+        // Nhập các phần tử của mảng
+        System.out.println("Nhập các phần tử của mảng:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print("arr[" + i + "][" + j + "]: ");
+                arr[i][j] = scanner.nextInt();
+            }
+        }
+
+        // In ra mảng đã nhập
+        System.out.println("Mảng đã nhập:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        // Tính tổng các phần tử chia hết cho 5 trong mảng
+        System.out.println("Các phần tử chia hết cho 5 trong mảng:");
+        int sum = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (arr[i][j] % 5 == 0) {
+                    System.out.println("arr[" + i + "][" + j + "]: " + arr[i][j]);
+                    sum += arr[i][j];
+                }
+            }
+        }
+
+        System.out.println("Tổng các phần tử chia hết cho 5 trong mảng là: " + sum);
+
+        scanner.close();
+    }
+}
